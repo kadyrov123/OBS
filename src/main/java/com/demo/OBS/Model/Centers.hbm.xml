@@ -1,0 +1,36 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+    <class name="com.demo.OBS.Model.Centers" table="centers" schema="obs">
+        <id name="id">
+            <column name="id" sql-type="int(10)"/>
+        </id>
+        <property name="title">
+            <column name="title" sql-type="varchar(100)" length="100"/>
+        </property>
+        <property name="locationId">
+            <column name="location_id" sql-type="int(10)"/>
+        </property>
+        <property name="fotoId">
+            <column name="foto_id" sql-type="int(10)"/>
+        </property>
+        <property name="phoneNumber">
+            <column name="phone_number" sql-type="varchar(25)" length="25"/>
+        </property>
+        <property name="rating">
+            <column name="rating" sql-type="float" precision="-1" not-null="true"/>
+        </property>
+        <property name="address">
+            <column name="address" sql-type="varchar(100)" length="100"/>
+        </property>
+        <property name="numFields">
+            <column name="num_fields" sql-type="int(5)" not-null="true"/>
+        </property>
+        <property name="adminId">
+            <column name="admin_id" sql-type="int(10)"/>
+        </property>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,33 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-configuration PUBLIC
+    "-//Hibernate/Hibernate Configuration DTD//EN"
+    "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+  <session-factory>
+    <property name="connection.url">jdbc:mysql://localhost:3306/obs</property>
+    <property name="connection.driver_class">com.mysql.jdbc.Driver</property>
+      <mapping resource="com/demo/OBS/Model/Centers.hbm.xml"/>
+    <mapping class="com.demo.OBS.Model.Centers"/>
+    <mapping resource="com/demo/OBS/Model/Fields.hbm.xml"/>
+    <mapping class="com.demo.OBS.Model.Fields"/>
+    <mapping class="com.demo.OBS.Model.Foto"/>
+    <mapping resource="com/demo/OBS/Model/Foto.hbm.xml"/>
+    <mapping resource="com/demo/OBS/Model/Location.hbm.xml"/>
+    <mapping class="com.demo.OBS.Model.Location"/>
+    <mapping resource="com/demo/OBS/Model/Timetable.hbm.xml"/>
+    <mapping class="com.demo.OBS.Model.Timetable"/>
+    <mapping class="com.demo.OBS.Model.Users"/>
+    <mapping resource="com/demo/OBS/Model/Users.hbm.xml"/>
+      <mapping class="com.demo.OBS.Model.Time"/>
+      <mapping resource="com/demo/OBS/Model/Time.hbm.xml"/>
+      <mapping class="com.demo.OBS.Model.Role"/>
+      <mapping resource="com/demo/OBS/Model/Role.hbm.xml"/>
+      <mapping class="com.demo.OBS.Model.Booked"/>
+      <mapping resource="com/demo/OBS/Model/Booked.hbm.xml"/>
+      <!-- <property name="connection.username"/> -->
+    <!-- <property name="connection.password"/> -->
+
+    <!-- DB schema will be updated if needed -->
+    <!-- <property name="hbm2ddl.auto">update</property> -->
+  </session-factory>
+</hibernate-configuration>

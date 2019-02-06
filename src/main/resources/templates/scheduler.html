@@ -1,0 +1,130 @@
+
+<!doctype html>
+<html>
+<head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# website: http://ogp.me/ns/website#">
+
+  <title>Scheduler - Real World Example | AlloyUI</title>
+
+  <meta charset="utf-8">
+  <meta name="author" content="Eduardo Lundgren, Nate Cavanaugh">
+  <meta name="description" content="AlloyUI is a framework built on top of YUI3 (JavaScript) that uses Bootstrap (HTML/CSS) to provide a simple API for building high scalable applications.">
+
+  <!-- Facebook Tags -->
+  <meta property="fb:app_id" content="176947299114210">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://alloyui.com">
+  <meta property="og:image" content="https://alloyui.com/website/img/facebook-share.jpg">
+  <meta property="og:title" content="Scheduler - Real World Example | AlloyUI">
+  <meta property="og:description" content="AlloyUI is a framework built on top of YUI3 (JavaScript) that uses Bootstrap (HTML/CSS) to provide a simple API for building high scalable applications.">
+
+  <!-- Favicon -->
+  <link rel="shortcut icon" type="image/x-icon" href="https://alloyui.com/website/img/favicon.ico">
+
+  <!-- CSS: Alloy Bootstrap -->
+  <link href="https://alloyui.com/alloy-ui/aui-css/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- CSS: Website style -->
+  <link href="https://alloyui.com/website/css/main.css" rel="stylesheet">
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,700" rel="stylesheet">
+
+  <!-- JS -->
+  <script src="https://cdn.alloyui.com/3.0.1/aui/aui-min.js"></script>
+
+</head>
+<body class="yui3-skin-sam">
+<script>
+  YUI().use(
+  'aui-scheduler',
+  function(Y) {
+    var events = [
+      {
+        content: 'AllDay',
+        endDate: new Date(2013, 1, 5, 23, 59),
+        startDate: new Date(2013, 1, 5, 0)
+      },
+      {
+        color: '#8D8',
+        content: 'Colorful',
+        endDate: new Date(2013, 1, 6, 6),
+        startDate: new Date(2013, 1, 6, 2)
+      },
+      {
+        content: 'MultipleDays',
+        endDate: new Date(2013, 1, 8),
+        startDate: new Date(2013, 1, 4)
+      },
+      {
+        content: 'Disabled',
+        disabled: true,
+        endDate: new Date(2013, 1, 8, 5),
+        startDate: new Date(2013, 1, 8, 1)
+      },
+      {
+        content: 'Meeting',
+        endDate: new Date(2013, 1, 7, 7),
+        meeting: true,
+        startDate: new Date(2013, 1, 7, 3)
+      },
+      {
+        color: '#88D',
+        content: 'Overlap',
+        endDate: new Date(2013, 1, 5, 4),
+        startDate: new Date(2013, 1, 5, 1)
+      },
+      {
+        content: 'Reminder',
+        endDate: new Date(2013, 1, 4, 4),
+        reminder: true,
+        startDate: new Date(2013, 1, 4, 0)
+      }
+    ];
+
+    var agendaView = new Y.SchedulerAgendaView();
+    var dayView = new Y.SchedulerDayView();
+    var eventRecorder = new Y.SchedulerEventRecorder();
+    var monthView = new Y.SchedulerMonthView();
+    var weekView = new Y.SchedulerWeekView();
+
+    new Y.Scheduler(
+      {
+        activeView: weekView,
+        boundingBox: '#myScheduler',
+        date: new Date(2013, 1, 4),
+        eventRecorder: eventRecorder,
+        items: events,
+        render: true,
+        views: [dayView, weekView, monthView, agendaView]
+      }
+    );
+  }
+);
+</script>
+
+  </div>
+
+</div>
+    </div>
+
+    <div id="push"></div>
+
+  </div>
+
+
+  <script src="https://alloyui.com/website/js/version-dropdown.js"></script>
+
+  <script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-37033501-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en" xmlns   ="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <h2 th:text="${name}"></h2>
+    <h4>Fields</h4>
+    <table th:border="1">
+        <th>
+            <td>id</td>
+            <td>size</td>
+            <td>type</td>
+            <td>price</td>
+        </th>
+        <tr th:each="field:${fields}">
+            <td name="id" th:text="${field.id}"></td>
+            <td th:text="${field.size}"></td>
+            <td th:text="${field.fieldType}"></td>
+            <td th:text="${field.price}"></td>
+            <td ><a th:href="@{/admin/deleteField(id=${field.id})}">Delete Field</a></td>
+        </tr>
+    </table>
+
+    <!--
+    <h4>Booked</h4>
+    <table th:each="book:${booked}">
+        <th>
+        <td>id</td>
+        <td>size</td>
+        <td>type</td>
+        <td>price</td>
+        </th>
+        <tr>
+            <td th:text=""></td>
+            <td th:text="${book.fieldId}"></td>
+            <td th:text="${book.date}"></td>
+            <td th:text="${book.time}"></td>
+            <td ><a th:href="@{/bookedUserDetails(book.userId)}">Booked User Details</a></td>
+        </tr>
+    </table>
+      -->
+<h2>Add Field</h2>
+    <form class="sa-innate-form" th:action="@{/admin/addField}" th:object="${field}" method="post">
+        <label>Size(150x200)S</label><input type="text" th:field="*{size}" required>
+        <label>Price</label><input type="text" th:field="*{price}" required>
+        <label>Field type(covered/uncovered)</label><input type="text" th:field="*{fieldType}" required>
+        <button type="submit"> Add Field</button>
+    </form>
+
+    <form class="sa-innate-form" method="post" th:action="@{/changeFieldAttribute}">
+        <label>Id</label><input type="text" name="id" required>
+        <label>Width</label><input type="text" name="width" required>
+        <label>Length</label><input type="text" name="length" required>
+        <label>Price</label><input type="password" name="price" required>
+        <div class="form-group">
+            <div class=" col-sm-12">
+                <div class="checkbox">
+                    <label><input type="checkbox"> Covered</label>
+                </div>
+            </div>
+        </div>
+        <button type="submit"> Add Field</button>
+    </form>
+
+</body>
+</html>

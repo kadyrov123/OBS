@@ -1,0 +1,24 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+    <class name="com.demo.OBS.Model.Booked" table="booked" schema="obs">
+        <id name="id">
+            <column name="id" sql-type="int(100)"/>
+        </id>
+        <property name="fieldId">
+            <column name="field_id" sql-type="int(10)"/>
+        </property>
+        <property name="userId">
+            <column name="user_id" sql-type="int(10)"/>
+        </property>
+        <property name="theDate">
+            <column name="the_date" sql-type="date"/>
+        </property>
+        <property name="timeId">
+            <column name="time_id" sql-type="int(5)"/>
+        </property>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,923 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+   <head>
+      <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <meta name="description" content="">
+      <meta name="author" content="">
+      <link rel="shortcut icon" href="assets/ico/favicon.ico">
+      <title>INSTANT - Bootstrap Theme</title>
+      <!-- Bootstrap core CSS -->
+      <link href="assets/css/bootstrap.css" rel="stylesheet">
+      <!-- Custom styles for this template -->
+      <link href="assets/css/font-awesome.min.css" rel="stylesheet">
+      <link href="assets/css/style.css" rel="stylesheet">
+      <!-- Just for debugging purposes. Don't actually copy this line! -->
+      <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+      <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+      <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+      <![endif]-->
+
+       <!--------------------------------------------- MAP 2GIS ------------------------------------------------>
+       <script src="https://maps.api.2gis.ru/2.0/loader.js?pkg=full"></script>
+       <script type="text/javascript" th:each="center:${centers}">
+           var map;
+
+           DG.then(function () {
+               map = DG.map('map', {
+                   center: [42.85597465586978, 74.60685074329378],
+                   zoom: 15
+               });
+
+               DG.marker([42.85597465586978, 74.60685074329378]).addTo(map).bindPopup("[[${center.title}]]");
+           });
+       </script>
+
+   </head>
+   <body>
+      <!-- Static navbar -->
+      <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+         <div class="container">
+            <div class="navbar-header">
+               <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+               <span class="sr-only">Toggle navigation</span>
+               <span class="icon-bar"></span>
+               <span class="icon-bar"></span>
+               <span class="icon-bar"></span>
+               </button>
+               <a class="navbar-brand" href="index.html">FootFIELD</a>
+            </div>
+            <div class="navbar-collapse collapse">
+               <ul class="nav navbar-nav navbar-right">
+                  <li class="active"><a href="javascript: document.logoutForm.submit()" >Главное</a></li>
+
+
+
+                  <a href="javascript: document.logoutForm.submit()" > Logout Link </a>
+
+                  <form name="logoutForm" th:action="@{/logout}" method="post" th:hidden="true">
+                     <input hidden type="submit" value="Logout"/>
+                  </form>
+
+
+
+
+                  <li class="dropdown"><a href="#">Стадион</a>
+                     <div class="dropdown-content left">
+                        <a href="futbolistan.html">ФУТБОЛИСТАН</a>
+                        <a href="kgsport.html">KG Sport</a>
+                        <a href="alga.html">АЛГА</a>
+                     </div>
+
+
+                  <li><a href="#register"  data-toggle="modal" data-target="#register">Вход/регистрация</a></li>
+               </ul>
+            </div>
+            <!--/.nav-collapse -->
+         </div>
+      </div>
+      <div id="ge">
+        
+      </div>
+      <!--<section id="works"></section>-->
+      <div class="container">
+         <div class="col-md-8 col-xs-12 col-sm-12 mt col_">
+            <div class="col-md-12 carouseled">
+               <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+                  <!-- Indicators -->
+                  <ol class="carousel-indicators">
+                     <li data-target="#carousel-example-generic" data-slide-to="0"></li>
+                     <li data-target="#carousel-example-generic" data-slide-to="1" class="active"></li>
+                     <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+                  </ol>
+                  <!-- Wrapper for slides -->
+                  <div class="carousel-inner">
+                     <div class="item">
+                        <img src="assets/img/portfolio/folio07.jpeg" alt="...">
+                        <div class="carousel-caption">
+                           
+                        </div>
+                     </div>
+                     <div class="item active">
+                        <img src="assets/img/portfolio/flio2.jpg" alt="...">
+                        <div class="carousel-caption">
+                          
+                        </div>
+                     </div>
+                     <div class="item">
+                        <img src="assets/img/portfolio/flio2.jpg" alt="...">
+                        <div class="carousel-caption">
+                          
+                        </div>
+                     </div>
+                  </div>
+                  <!-- Controls -->
+                  <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
+                  <span class="glyphicon glyphicon-chevron-left"></span>
+                  </a>
+                  <a class="right carousel-control" href="#carousel-example-generic" data-slide="next">
+                  <span class="glyphicon glyphicon-chevron-right"></span>
+                  </a>
+               </div>
+            </div>
+            <div class="col-md-12  mb" style="padding: 0;" th:each="center:${centers}">
+               <div class="tarifes-block">
+               <div class="tarifes-header-block block-header-green2" style="color: blue; font-weight: bold; " th:text="${center.title}">Поле АЛГА</div>
+               <div class="contains_block" style="display: flow-root;">
+
+                   <!--------------------------------------------------------------------------------------------------->
+                   <div class="row justify-content-around col-md-12 content_div"  th:each="field:${fields}">
+                       <div class="col-md-7 content_left ">
+                           <img src="assets/img/im.jpg" class="img-responsive full-width" >
+                       </div>
+                       <div class="description col-md-5 content_right">
+                           <p class="mt-5">
+                               #[[${field.id}]] футбольное поле
+                           </p>
+                           <div class="sect"><i class="fa fa-gear"></i> <span class="inf">size: [[${field.size}]]</span>
+                           </div>
+                           <div class="sect"><i class="fa fa-dollar"></i> <span class="inf"> Cena : [[${field.price}]]</span> </div>
+                           <div class="sect"><i class="fa fa-futbol-o"></i> <span class="inf">Now : </span> </div>
+                           <div class="sect"><i class="fa fa-futbol-o"></i> <span class="inf"> Type:[[${field.fieldType}]] </span> </div>
+                           <a  class="pull-right btn btn-success mt-5 call-book-modal booking-send-field-id" data-toggle="modal" data-target="#booking"
+                                 date-field-id="${field.id}" value="${field.id}"
+                               th:onclick="${'javascript:setFieldId('+ field.getId() +')'}">ЗАБРОНИРОВАТЬ</a>
+                       </div>
+
+                   </div>
+                   <!--------------------------------------------------------------------------------------------------->
+               </div>
+
+            </div>
+
+            </div>
+             <div id="map" style="width:500px; height:400px"></div>
+            
+            <div class="col-lg-12 col-md-12 col-sm-12 ">
+               <div class="row" >
+                  
+               </div>
+            </div>
+         </div>
+         <div class="col-md-4 col-xs-12 col-sm-12 mt clrfx">
+            <div class="tarifes-block">
+               <div class="tarifes-header-block block-header-green">Профиль</div>
+               <div class="contains_block">
+                  <span class="col-md-4 col-xs-5 col-sm-4 col-lg-4">
+                  <img src="assets/img/portfolio/user.png" class="img_mini_profile">
+                  </span>
+                  <span class="col-md-8 col-xs-7 col-sm-8 col-lg-8 booked_info">
+                     <div class="description">
+                        <div class="sect"><i class="fa fa-user"></i> <a href="#"><span class="inf">Abdygany</span></a> </div>
+                        <div class="sect"><i class="fa fa-tasks"></i> <a href=""><span class="inf">27 bookings</span></a> </div>
+                        <div class="sect"><i class="fa fa-dollar"></i> <span class="inf">0.0 сом</span> </div>
+                     </div>
+                  </span>
+               </div>
+            </div>
+            <br>
+            <div class="tarifes-block">
+               <div class="tarifes-header-block block-header-blue">Забронированные поля/история</div>
+               <div class="contains_block">
+                  <div class="booked_history">
+                     <div class="histories">
+                        <span class="col-md-4 col-xs-5 col-sm-4 col-lg-4">
+                        <img src="assets/img/portfolio/folio10.jpg" class="booked_img">
+                        </span>
+                        <span class="col-md-8 col-xs-7 col-sm-8 col-lg-8 booked_info">
+                           <div class="description">
+                              <div class="sect"><i class="fa fa-futbol-o"></i> <a href="#"><span class="inf">5-е поле</span></a> </div>
+                              <div class="sect"><i class="fa fa-clock-o"></i> <span class="inf">29 Октябрь 2017 06:00:00ч(начинается после 04:20 часа)</span> </div>
+                              <div class="sect"><i class="fa fa-dollar"></i> <span class="inf">VIP</span> </div>
+                           </div>
+                        </span>
+                     </div>
+                     <div class="histories">
+                        <span class="col-md-4 col-xs-5 col-sm-4 col-lg-4">
+                        <img src="assets/img/portfolio/folio07.jpeg" class="booked_img">
+                        </span>
+                        <span class="col-md-8 col-xs-7 col-sm-8 col-lg-8 booked_info">
+                           <div class="description">
+                              <div class="sect"><i class="fa fa-futbol-o"></i> <a href="#"><span class="inf">1-е поле</span></a> </div>
+                              <div class="sect"><i class="fa fa-clock-o"></i> <span class="inf">25 Октябрь 2017 13:05:00</span> </div>
+                              <div class="sect"><i class="fa fa-dollar"></i> <span class="inf">15 000 (01:29ч)</span> </div>
+                           </div>
+                        </span>
+                     </div>
+                     <div class="histories">
+                        <span class="col-md-4 col-xs-5 col-sm-4 col-lg-4">
+                        <img src="assets/img/portfolio/folio10.jpg" class="booked_img">
+                        </span>
+                        <span class="col-md-8 col-xs-7 col-sm-8 col-lg-8 booked_info">
+                           <div class="description">
+                              <div class="sect"><i class="fa fa-futbol-o"></i> <a href="#"><span class="inf">3-е поле</span></a> </div>
+                              <div class="sect"><i class="fa fa-clock-o"></i> <span class="inf">28 Октябрь 2017 18:15:00</span> </div>
+                              <div class="sect"><i class="fa fa-dollar"></i> <span class="inf">25 000 (04:10ч)</span> </div>
+                           </div>
+                        </span>
+                     </div>
+                  </div>
+               </div>
+            </div>
+            <br>
+            <div class="tarifes-block">
+               <div class="tarifes-header-block block-header-pink">Забронированные поля</div>
+               <div class="contains_block">
+                  <div class="booked_history">
+                     <div class="histories">
+                        <span class="col-md-4 col-xs-5 col-sm-4 col-lg-4">
+                        <img src="assets/img/portfolio/folio07.jpeg" class="booked_img">
+                        </span>
+                        <span class="col-md-8 col-xs-7 col-sm-8 col-lg-8 booked_info">
+                           <div class="description">
+                              <div class="sect"><i class="fa fa-futbol-o"></i> <a href="#"><span class="inf">7-е поле</span></a> </div>
+                              <div class="sect"><i class="fa fa-clock-o"></i> <span class="inf">11:30ч - 02:20ч</span> </div>
+                              <div class="sect"><i class="fa fa-circle-o-notch"></i> <span class="inf">01:45</span> </div>
+                              <div class="sect"><i class="fa fa-clock-o"></i> <span class="inf">Свободна будет через 01:05ч</span> </div>
+                           </div>
+                        </span>
+                     </div>
+                     <div class="histories">
+                        <span class="col-md-4 col-xs-5 col-sm-4 col-lg-4">
+                        <img src="assets/img/portfolio/folio07.jpeg" class="booked_img">
+                        </span>
+                        <span class="col-md-8 col-xs-7 col-sm-8 col-lg-8 booked_info">
+                           <div class="description">
+                              <div class="sect"><i class="fa fa-futbol-o"></i> <a href="#"><span class="inf">8-е поле</span></a> </div>
+                              <div class="sect"><i class="fa fa-clock-o"></i> <span class="inf">11:00ч - 12:48ч</span> </div>
+                              <div class="sect"><i class="fa fa-circle-o-notch"></i> <span class="inf">01:45</span> </div>
+                              <div class="sect"><i class="fa fa-clock-o"></i> <span class="inf">Свободна будет через 5мин</span> </div>
+                           </div>
+                        </span>
+                     </div>
+                  </div>
+               </div>
+            </div>
+            <br>
+            <div class="tarifes-block">
+               <div class="tarifes-header-block block-header-green3">Незабронированные поля</div>
+               <div class="contains_block">
+                  <div class="booked_history">
+                     <div class="histories">
+                        <span class="col-md-4 col-xs-5 col-sm-4 col-lg-4">
+                        <img src="assets/img/portfolio/folio07.jpeg" class="booked_img">
+                        </span>
+                        <span class="col-md-8 col-xs-7 col-sm-8 col-lg-8 booked_info">
+                           <div class="description">
+                              <div class="sect"><i class="fa fa-futbol-o"></i> <a href="#"><span class="inf">2-е поле</span></a> </div>
+                              <div class="sect"><i class="fa fa-clock-o"></i> <span class="inf">Нет заказа до 12ч</span> </div>
+                              <div class="sect"><i class="fa fa-dollar"></i> <span class="inf">1000 сом/час</span> </div>
+                           </div>
+                        </span>
+                     </div>
+                     <div class="histories">
+                        <span class="col-md-4 col-xs-5 col-sm-4 col-lg-4">
+                        <img src="assets/img/portfolio/folio07.jpeg" class="booked_img">
+                        </span>
+                        <span class="col-md-8 col-xs-7 col-sm-8 col-lg-8 booked_info">
+                           <div class="description">
+                              <div class="sect"><i class="fa fa-futbol-o"></i> <a href="#"><span class="inf">4-е поле</span></a> </div>
+                              <div class="sect"><i class="fa fa-clock-o"></i> <span class="inf">Свободна до 02:00ч</span> </div>
+                              <div class="sect"><i class="fa fa-dollar"></i> <span class="inf">3000 сом/час</span> </div>
+                           </div>
+                        </span>
+                     </div>
+                     <div class="histories">
+                        <span class="col-md-4 col-xs-5 col-sm-4 col-lg-4">
+                        <img src="assets/img/portfolio/folio07.jpeg" class="booked_img">
+                        </span>
+                        <span class="col-md-8 col-xs-7 col-sm-8 col-lg-8 booked_info">
+                           <div class="description">
+                              <div class="sect"><i class="fa fa-futbol-o"></i> <a href="#"><span class="inf">7-е поле</span></a> </div>
+                              <div class="sect"><i class="fa fa-clock-o"></i> <span class="inf">Свободна до 01:00ч (21Октябрь)</span> </div>
+                              <div class="sect"><i class="fa fa-dollar"></i> <span class="inf">1000 сом/час</span> </div>
+                           </div>
+                        </span>
+
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+      <div id="footerwrap">
+         <div class="container">
+            <div class="row centered">
+               <div class="col-lg-2">
+                  <p><b>FootFIELD</b></p>
+               </div>
+               <div class="col-lg-4">
+                  <p>Футбольное поле Inc.офис,улица.Московская 168/2,720021,Бишкек,Кыргыз Республикасы.</p>
+               </div>
+               <div class="col-lg-3">
+                  <p>support@footfield.kg</p>
+               </div>
+               <div class="col-lg-3">
+                  <div class="centered socials">
+                     <div class="col-lg-2 col-sm-1 col-md-1 col-xs-1">
+                        <a href="#"><i class="fa fa-facebook"></i></a>
+                     </div>
+                     <div class="col-lg-2 col-sm-1 col-md-1 col-xs-1">
+                        <a href="#"><i class="fa fa-twitter"></i></a>
+                     </div>
+                     <div class="col-lg-2 col-sm-1 col-md-1 col-xs-1">
+                        <a href="#"><i class="fa fa-linkedin"></i></a>
+                     </div>
+                     <div class="col-lg-2 col-sm-1 col-md-1 col-xs-1">
+                        <a href="#"><i class="fa fa-instagram"></i></a>
+                     </div>
+                     <div class="col-lg-2 col-sm-1 col-md-1 col-xs-1">
+                        <a href="#"><i class="fa fa-tumblr"></i></a>
+                     </div>
+                     <div class="col-lg-2 col-sm-1 col-md-1 col-xs-1">
+                        <a href="#"><i class="fa fa-odnoklassniki"></i></a>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+      <!-- Modal -->
+
+      <!-- ============================================= REGISTRATION=============================================-->
+
+
+      <div class="modal fade" id="register" role="dialog">
+         <div class="modal-dialog">
+            <!-- Modal content-->
+            <div class="modal-content">
+               <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal">&times;</button>
+                  <ul class="nav nav-tabs final-login modal-title">
+                     <li class="active"><a data-toggle="tab" href="#sectionA">Вход</a></li>
+                     <li><a data-toggle="tab" href="#sectionB">Регистрация</a></li>
+                  </ul>
+               </div>
+               <div class="modal-body">
+                  <div class="tab-content">
+                     <div id="sectionA" class="tab-pane fade in active">
+                        <div class="innter-form">
+
+
+                           <form class="sa-innate-form" method="post">
+                              <label>Адрес почта</label>
+                              <input type="text" name="username" required>
+                              <label>Пароль</label>
+                              <input type="password" name="password" required>
+                              <div class="form-group">
+                                 <div class=" col-sm-12">
+                                    <div class="checkbox">
+                                       <label><input type="checkbox"> Запомнить</label>
+                                    </div>
+                                 </div>
+                              </div>
+                              <button type="submit"></button>
+                           </form>
+
+
+                        </div>
+                        <div class="clearfix"></div>
+                     </div>
+
+                     <div id="sectionB" class="tab-pane fade">
+                        <div class="innter-form">
+
+
+                           <form class="sa-innate-form" method="post">
+                              <label>Адрес почта</label>
+                              <input type="email" name="username" required>
+                              <label>тел. номер</label>
+                              <input type="text" name="tel" required>
+                              <label>Имя</label>
+                              <input type="text" name="surname">
+                              <label>Пароль</label>
+                              <input type="password" name="password" required>
+                              <label>Пароль (повтор)</label>
+                              <input type="password" name="password2" required>
+                              <button type="submit">Присоединяйся сейчас</button>
+                              <p>Нажимая «Присоединиться», вы соглашаетесь с нашей правилой.</p>
+                           </form>
+
+
+
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+      <!--modal end-->
+
+      <!-- Modal -->
+      <div class="modal fade" id="booking" role="dialog">
+         <div class="modal-dialog">
+            <!-- Modal content-->
+            <div class="modal-content">
+               <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal">&times;</button>
+                  <button id="back-rent" style="display: none;"><i class="fa fa-arrow-left"></i></button> <span id="modalBookingTitle"></span>
+
+               </div>
+               <div class="modal-body" style="padding:0; margin-top: -1px;">
+                  <div class="tab-content modal-background">
+                     <div id="booking_section1" style="display: block;">
+                     <img src="" id="modalBookingImage" alt="..." class="img-responsive full-width">
+                     <div class="choose-date">
+                       Выберите дату:
+                     </div>
+                     <div class="date-choosing">
+                        <form method="post" th:action="@{/chooseDay}">
+                           <div class="date-choosing-day" th:each="day:${week}" >
+                              <div class="date-choosing-day-name">
+                                 Пн
+                              </div>
+
+                              <button data-weekend="false" data-date="12" class="date-choosing-day-number date-active"
+                                      data-target="#myModal" data-dismiss="modal" data-toggle="modal" th:text="${day.day}"
+                                      th:onclick="${'javascript:getDay('+ day.id +')'}">
+                                 <!--<a th:href="@{/chooseDay(day=${day})}" value="oldValue" name="oldName" th:text="${day}"></a> -->
+                              </button>
+
+                           </div>
+                        </form>
+                     </div>
+                     </div>
+                      <!--
+                     <div id="booking_section2" style="display: none;">
+                        <div class="time-booking-times">
+
+                     </div>
+                     <div class="date-choosing" style="height: 59px; color: #6d9083;     font-size: 11px;">
+                        <div class="col-lg-12 col-sm-8 col-md-6 col-xs-8">
+                           С <span id="rent_from">__</span> до <span id="rent_to">__</span> (<span id="rent_comm">__</span>) <span id="rent_on">__</span>
+                        </div>
+                        <div class="col-lg-6 col-sm-6 col-md-6 col-xs-6">
+                           Сумма: <span id="rent_price">0</span>
+                        </div>
+                        <div class="col-lg-3 col-sm-3 col-md-3 col-xs-3" style="margin-top: -8px;">
+                           <button class="btn btn-success">Забронировать</button>
+                        </div>
+                     </div>
+                     </div>
+                  </div>
+                   -->
+               </div>
+            </div>
+         </div>
+      </div>
+      </div>
+      <!--modal end-->
+
+      <!--------------------------------------- New Modal ------------------------------------------------>
+      <div id="myModal" class="modal fade" role="dialog">
+          <div class="modal-dialog">
+
+              <!-- Modal content-->
+
+              <div class="modal-content">
+                  <div class="modal-header">
+                      <button type="button" class="close" data-dismiss="modal">&times;</button>
+                      <h4 class="modal-title">Modal Header</h4>
+                  </div>
+                  <div class="modal-body container row">
+                    <div class="row container" id="time-container">
+
+                        <div class="checkbox col-md-6">
+                           <label id="time-checkbox-label-1"></label>
+                        </div>
+                        <div class="checkbox col-md-6">
+                           <label id="time-checkbox-label-2"></label>
+                        </div>
+                    </div>
+                  </div>
+                  <div class="modal-footer">
+                      <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                      <button type="submit" class="btn btn-default"
+                                onclick="collectCheckedTimeId()">Submit</button>
+                   </div>
+              </div>
+          </div>
+      </div>
+
+
+
+
+
+      <!-- Bootstrap core JavaScript
+         ================================================== 
+      <!- Placed at the end of the document so the pages load faster -->
+      <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+      <script src="assets/js/bootstrap.min.js"></script>
+      <!--
+      <script> //sends field_id from book button to modal
+         $('#exampleModal').on('show.bs.modal', function (event) {
+         var button = $(event.relatedTarget) // Кнопка, что спровоцировало модальное окно
+
+         var field_id = button.data('field-id') // Извлечение информации из данных-* атрибутов
+
+         // Если необходимо, вы могли бы начать здесь AJAX-запрос (и выполните обновление в обратного вызова).
+
+         // Обновление модальное окно Контента. Мы будем использовать jQuery здесь, но вместо него можно использовать привязки данных библиотеки или других методов.
+
+         var modal = $(this)
+         modal.find('.modalBookingTitle').text("#"+field_id +" Footbal Field" )
+         modal.find('#booking .date-choosing-day-number date-active input_class').value(field_id)
+         })
+      </script>
+      -->
+      <script type="text/javascript"> // get day and field id and send it to controller
+
+      var id;
+      var userId;
+      var time;
+      var day;
+      var fieldId;
+
+
+
+
+      function getCheckedTime(){
+          var list=[];
+          var nodes = document.getElementsByName("time-checkbox");
+          var time = document.getElementsByName("time-label");
+          var data = {};
+          for( i =0 ; i<nodes.length ; ++i) {
+             var timetable = {};
+             if (nodes[i].checked) {
+                timetable.push(i);
+                timetable.push(time[i].textContent);
+                list.push(timetable);
+             } else {
+             }
+          }
+          sendCheckedList(list);
+      }
+      function sendCheckedList(list) {
+          alert(time);
+          $.ajax({
+              type : "POST",
+              url : "booking",
+              dataType: 'json',
+              contentType:'application/json',
+              data : JSON.stringify(list),
+
+              success : function(response) {
+                  //alert("succes working");
+              },
+              error : function(e) {
+                  //alert("error suka");
+                  console.log('Error: ' + e);
+              }
+          });
+      }
+
+      function setFieldId(id) {
+         fieldId = id;
+         return fieldId;
+      }
+      function getDay(d){
+          day = d;
+          doPostAjax(fieldId,day);
+      }
+      /*========================================== DO POST ==================================================*/
+      function doPostAjax(f,d) {
+          $.ajax({
+              url : "getDataForTimetable",
+              data : {
+                  field_id: f, //notice that "myArray" matches the value for @RequestParam
+                  dayId : d           //on the Java side
+              },
+              success : function(response) {
+                  // do something ...
+                  //alert("succes working")
+                  /*if ($("#time-checkbox-label-2").hasChildNodes()) {
+                      $("#time-checkbox-label-2").delete().childNodes;
+                      alert("if working")
+                  }*/
+                  doGetAjax();
+              },
+              error : function(e) {
+                  alert('Error: ' + e);
+              }
+          });
+      }
+
+      /*================================================ DO GET Ajax ========================================================*/
+
+      function  collectCheckedTimeId(){
+          var checkedTimeId = [];
+          var checkbox = document.getElementsByClassName('timeCheckbox');
+          for(var i=0;checkbox[i];++i){
+              if(checkbox[i].checked){
+                  checkedTimeId.push(checkbox[i].value);
+              }
+          }
+          time = checkedTimeId;
+          if(checkedTimeId.length == 0){
+             alert("Please choose time");
+          }else {
+             sendCheckedTimeIdToController();
+          }
+      }
+      function sendCheckedTimeIdToController(){
+          t =time;
+          f=fieldId;
+          d = day;
+          $.ajax({
+              url : "sendCheckedTimeIdToController",
+              data : {
+                  time:time,
+                 fieldId:fieldId,
+                 day:day
+              },
+              success : function(result) {
+                  closeTimeModal();
+                  alert("succes working");
+              },
+              error : function(e) {
+                  alert("error ");
+
+              }
+          });
+      }
+
+      function closeTimeModal(){
+         alert("Field successfully booked");
+         $("#myModal").modal('hide');
+      }
+
+      function addCheckbox(input,id){
+          if(id<=12){
+          $("#time-checkbox-label-1").append(input);}
+          if(id>12 && id<=24){
+              $("#time-checkbox-label-2").append(input);}
+      }
+
+
+      function doGetAjax() {
+          //alert("doget is working")
+          $.ajax({
+              type : "GET",
+              url : "showTimetables",
+
+              dataType: "json",
+              success : function(result) {
+                  $.each(result.data ,function(i,timetable) {
+                      if(timetable.isFree == "free"){
+                          var input = "<label name='time-label' >" +
+                              "<input class='timeCheckbox' type='checkbox' name='time' value='"+timetable.id+
+                              "'>"+ timetable.time +"</label><br>"
+                          addCheckbox(input, timetable.id);
+                      }
+                      else{
+                           var input = "<label name='time-label' >" +
+                               "<input class='timeCheckbox' type='checkbox' name='time' value='"+timetable.id+
+                               "' disabled>"+ timetable.time +"</label><br>"
+                           addCheckbox(input, timetable.id);
+                      }
+                  });
+              },
+              error : function(e) {
+                  //alert("Errror");
+                  console.log("ERROR: ", e);
+              }
+          });
+      }
+
+      </script>
+      <!--
+      <script type="text/javascript">
+         $(document).ready(function() {
+          var today = '7';
+          var times = [
+              ["00:00-1:00", "1:00-2:00", "2:00-3:00", "3:00-4:00", "4:00-5:00", "5:00-6:00"],
+              ["6:00-7:00","7:00-8:00", "8:00-9:00", "9:00-10:00", "10:00-11:00", "11:00-12:00"],
+              ["12:00-13:00", "13:00-14:00","14:00-15:00", "15:00-16:00", "16:00-17:00", "17:00-18:00"],
+              [ "18:00-19:00", "19:00-20:00", "20:00-21:00","21:00-22:00","22:00-23:00" , "23:00-00:00"]
+          ];
+          var allTimes = ["00:00-1:00", "1:00-2:00", "2:00-3:00", "3:00-4:00", "4:00-5:00", "5:00-6:00","6:00-7:00","7:00-8:00", "8:00-9:00", "9:00-10:00", "10:00-11:00", "11:00-12:00","12:00-13:00", "13:00-14:00","14:00-15:00", "15:00-16:00", "16:00-17:00", "17:00-18:00","18:00-19:00", "19:00-20:00", "20:00-21:00","21:00-22:00","22:00-23:00" , "23:00-00:00"];
+          var rentedTimes = {
+              '7': ["22:00"],
+              '8': ["21:00", "21:30", "22:00"]
+          };
+          var pricesWeekDays = {
+              '00:00-15:30': 270,
+              '15:30-22:30': 470,
+              '22:30-00:00': 170
+          };
+          var pricesWeekends = {
+              '00:00-15:30': 370,
+              '15:30-22:30': 570,
+              '22:30-00:00': 270
+          };
+          var selectedTimes = [];
+          var isWeekend;
+          var choosenDay;
+          var thisMonth = 'November';
+         $('.call-book-modal').click(function(){
+
+               $('#modalBookingTitle').html($(this).parent().children('p.mt-5').text());
+               $('#modalBookingImage').attr('src', $(this).parent().children('img').attr('src'));
+
+            });
+          function reloadListeners() {
+              $('button.time-booking-row:not(.rented-already)').on('click', function() {
+                  var timeCrr = $(this).data('time');
+                  console.log("sfdf");
+                  if (!$(this).data('is-selected')) {
+      
+      
+                      if (selectedTimes.length == 0) {
+                          $(this).addClass('timed-active');
+                          $(this).data('is-selected', true);
+                          $(this).removeClass('timed-hover');
+                          selectedTimes.push(timeCrr);
+                      } else {
+                          var indexed = allTimes.indexOf(timeCrr);
+                          if (indexed == 0) {
+                              if (selectedTimes.indexOf(allTimes[allTimes.length - 1]) != -1 || selectedTimes.indexOf(allTimes[indexed - 1]) != -1 || selectedTimes.indexOf(allTimes[indexed + 1]) != -1) {
+                                  $(this).addClass('timed-active');
+                                  $(this).data('is-selected', true);
+                                  $(this).removeClass('timed-hover');
+                                  selectedTimes.push(timeCrr);
+                              }
+                          } else if (indexed == allTimes.length - 1) {
+                              if (selectedTimes.indexOf(allTimes[0]) != -1 || selectedTimes.indexOf(allTimes[indexed - 1]) != -1 || selectedTimes.indexOf(allTimes[indexed + 1]) != -1) {
+                                  $(this).addClass('timed-active');
+                                  $(this).data('is-selected', true);
+                                  $(this).removeClass('timed-hover');
+                                  selectedTimes.push(timeCrr);
+                              }
+                          } else {
+                              if (selectedTimes.indexOf(allTimes[indexed - 1]) != -1 || selectedTimes.indexOf(allTimes[indexed + 1]) != -1) {
+                                  $(this).addClass('timed-active');
+                                  $(this).data('is-selected', true);
+                                  $(this).removeClass('timed-hover');
+                                  selectedTimes.push(timeCrr);
+                              }
+                          }
+                      }
+
+                  } else {
+
+                      $(this).removeClass('timed-active');
+                      $(this).data('is-selected', false);
+                      $(this).trigger('mouseleave');
+                      //console.log(selectedTimes.indexOf(timeCrr));
+                      selectedTimes.splice(selectedTimes.indexOf(timeCrr), 1);
+                  }
+                  //console.log(selectedTimes);
+                   var maxVal = {
+                  'num': 0,
+                  'val': '00:00'
+              };
+              var minVal = {
+                  'num': 1440,
+                  'val': '23:30'
+              };
+              for (var i = 0; i < selectedTimes.length; i++) {
+                  console.log(selectedTimes[i]);
+                  var maxTime = selectedTimes[i].split(":");
+                  var maxMin = ((+maxTime[0]) * 60) + (+maxTime[1]);
+                  if (maxMin > maxVal['num']) {
+                      maxVal['num'] = maxMin;
+                      maxVal['val'] = selectedTimes[i];
+                  }
+                  if (maxMin < minVal['num']) {
+                      minVal['num'] = maxMin;
+                      minVal['val'] = selectedTimes[i];
+                  }
+              }
+              var isContinue = true;
+              var brokenTime;
+              for (var i = allTimes.indexOf(minVal['val']); i <= allTimes.indexOf(maxVal['val']); i++) {
+                  if (selectedTimes.indexOf(allTimes[i]) == -1) {
+                      isContinue = false;
+                      break;
+                  }
+                  //console.log(allTimes[i]);
+              }
+              if (!isContinue) {
+                  var firstQuartile = ['', ''];
+                  var secondQuartile = ['', ''];
+                  var isFoundFirstQ = false;
+                  for (var i = 0; i < allTimes.length; i++) {
+                      if (selectedTimes.indexOf(allTimes[i]) > -1) {
+                          if (firstQuartile[0] == '' && !isFoundFirstQ) {
+                              firstQuartile[0] = allTimes[i];
+                          }
+                          if (secondQuartile[0] == '' && isFoundFirstQ) {
+                              secondQuartile[0] = allTimes[i];
+                          }
+                          if (i == allTimes.length - 1 && secondQuartile[1] == '' && isFoundFirstQ) {
+                              secondQuartile[1] = allTimes[i];
+                          }
+                      } else {
+                          if (firstQuartile[1] == '' && !isFoundFirstQ) {
+                              firstQuartile[1] = allTimes[i - 1];
+                              isFoundFirstQ = true;
+                          }
+      
+                      }
+                  }
+                  $('#rent_from').html(secondQuartile[0]);
+
+               if (allTimes.indexOf(firstQuartile[1]) != allTimes.length - 1 ) $('#rent_to').html(allTimes[allTimes.indexOf(firstQuartile[1]) + 1]);
+               else $('#rent_to').html(allTimes[0]);
+
+               $('#rent_on').html(choosenDay + " - " + ((+choosenDay) + 1) + " of " + thisMonth);
+                  //console.log("anormal: fi: " + firstQuartile[0] + ", ff: " + firstQuartile[1] + " | si: " + secondQuartile[0] + ", sf: " + secondQuartile[1]);
+              } else {
+               $('#rent_from').html(minVal['val']);
+               if (allTimes.indexOf(maxVal['val']) != allTimes.length - 1 ) $('#rent_to').html(allTimes[allTimes.indexOf(maxVal['val']) + 1]);
+               else $('#rent_to').html(allTimes[0]);
+               $('#rent_on').html(choosenDay + "th " + thisMonth);
+              }
+              var summ = 0;
+              for (var i = 0; i < selectedTimes.length; i++) {
+               summ += (+$("#t" + selectedTimes[i].replace(':', '')).data('price'));
+              }
+              $('#rent_comm').html(selectedTimes.length * 0.5 + "h.");
+              $('#rent_price').html(summ + "som");
+      
+              });
+              $('button.time-booking-row:not(.rented-already)').on('mouseover', function() {
+                  if (!$(this).hasClass('timed-active')) {
+                      $(this).addClass('timed-hover');
+                  }
+              });
+              $('button.time-booking-row:not(.rented-already)').on('mouseleave', function() {
+                  $(this).removeClass('timed-hover');
+              });
+          }
+
+          
+      
+          $('button.date-choosing-day-number').click(function() {
+      
+              isWeekend = $(this).data('weekend');
+              choosenDay = $(this).data('date');
+              $('#booking_section1').hide();
+              $('#booking_section2').show();
+              $('#back-rent').show();
+      
+              var timesText = '';
+      
+              for (var i = 0; i < times.length; i++) {
+                  timesText += '<div class="time-booking-col">';
+                  for (var e = 0; e < times[i].length; e++) {
+                      var isRented = false;
+                      if (rentedTimes.hasOwnProperty(choosenDay)) {
+                          if (rentedTimes[choosenDay].indexOf(times[i][e]) > -1) {
+                              isRented = true;
+                              console.log("contains");
+                          }
+                      }
+                      var price = 0;
+                      if (isWeekend) var prices = pricesWeekends;
+                      else var prices = pricesWeekDays;
+                      $.each(prices, function(index, value) {
+                          var staringEndingTime = index.split("-");
+                          var startingTime = staringEndingTime[0].split(":");
+                          var startingTimeMinute = ((+startingTime[0]) * 60) + (+startingTime[1]);
+                          var endingTime = staringEndingTime[1].split(":");
+                          var endingTimeMinute = ((+endingTime[0]) * 60) + (+endingTime[1]);
+                          if (endingTimeMinute == 0) {
+                              endingTimeMinute = 1440;
+                          }
+                          var currentBookingTime = times[i][e].split(":");
+                          var currentBookingTimeMinute = ((+currentBookingTime[0]) * 60) + (+currentBookingTime[1]);
+                          if (startingTimeMinute <= currentBookingTimeMinute && currentBookingTimeMinute < endingTimeMinute) {
+                              price = value;
+                              return false;
+                          }
+      
+                      });
+                      timesText += '<button class="time-booking-row ' + (isRented ? "rented-already" : "") + '" id="t' + times[i][e].replace(':', '') + '" data-time="' + times[i][e] + '" data-is-rented="' + isRented + '" ' + (isRented ? "disabled" : "") + ' data-is-selected="false" data-price="' + price + '"><span>' + times[i][e] + '</span></button>';
+                  }
+                  timesText += '</div>';
+              }
+              $('.time-booking-times').html(timesText);
+      
+              $('button.time-booking-row:not(.rented-already)').off('mouseover', function() {});
+              $('button.time-booking-row:not(.rented-already)').off('mouseleave', function() {});
+              $('button.time-booking-row:not(.rented-already)').off('click', function() {});
+              reloadListeners();
+          });
+          $('#back-rent').click(function() {
+              selectedTimes = [];
+              $('#booking_section1').show();
+              $('#booking_section2').hide();
+              $('#back-rent').hide();
+          });
+
+      });
+      </script>
+
+   -->
+   </body>
+</html>

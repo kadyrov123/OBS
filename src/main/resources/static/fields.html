@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Fields</title>
+</head>
+<body>
+<table border="1">
+
+    <tr th:each="field:${fields}">
+        <td th:text="${field.id}"></td>
+        <td th:text="${field.centerId}"></td>
+        <td th:text="${field.size}"></td>
+        <td th:text="${field.price}"></td>
+        <td th:text="${field.timetableId}"></td>
+        <td th:text="${field.id}"></td>
+        <td><a th:href="@{/timetable}">Fields</a></td>
+
+    </tr>
+</table>
+
+
+
+</body>
+</html>

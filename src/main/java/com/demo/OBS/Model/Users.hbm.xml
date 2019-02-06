@@ -1,0 +1,30 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+    <class name="com.demo.OBS.Model.Users" table="users" schema="obs">
+        <id name="id">
+            <column name="id" sql-type="int(10)"/>
+        </id>
+        <property name="firstname">
+            <column name="firstname" sql-type="varchar(50)" length="50"/>
+        </property>
+        <property name="lastname">
+            <column name="lastname" sql-type="varchar(50)" length="50"/>
+        </property>
+        <property name="numOfGames">
+            <column name="num_of_games" sql-type="int(10)" not-null="true"/>
+        </property>
+        <property name="username">
+            <column name="username" sql-type="varchar(100)" length="100"/>
+        </property>
+        <property name="password">
+            <column name="password" sql-type="varchar(500)" length="500"/>
+        </property>
+        <property name="role">
+            <column name="role" sql-type="varchar(50)" length="50"/>
+        </property>
+    </class>
+</hibernate-mapping>

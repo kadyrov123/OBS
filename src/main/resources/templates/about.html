@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="shortcut icon" href="assets/ico/favicon.ico">
+
+    <title>INSTANT - Bootstrap Theme</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="assets/css/bootstrap.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    
+    <link href="assets/css/font-awesome.min.css" rel="stylesheet">
+    <link href="assets/css/style.css" rel="stylesheet">
+
+    <!-- Just for debugging purposes. Don't actually copy this line! -->
+    <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+
+  <body>
+
+    <!-- Static navbar -->
+    <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="index.html">FootFIELD</a>
+        </div>
+        <div class="navbar-collapse collapse">
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="index.html">Главное</a></li>
+          <li class="dropdown"><a href="about.html">Стадион</a>
+            	<div class="dropdown-content left">
+  				  <a href="#">ФУТБОЛИСТАН</a>
+  				  <a href="#">KG Sport</a>
+  				  <a href="#">АЛГА</a>
+  				</div>
+          
+            </li>
+            <li><a href="#" data-toggle="modal" data-target="#register">Вход/регистрация</a></li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </div>
+
+
+	<div id="aboutwrap">
+	    <div class="container">
+			<div class="row">
+				<div class="col-lg-6 col-lg-offset-3">
+				</div>
+			</div><! --/row -->
+	    </div> <!-- /container -->
+	</div><! --/aboutwrap -->
+	
+	<div class="container">
+		<div class="row centered mt mb">
+			<div class="col-lg-8 col-lg-offset-2">
+				<h2>FootFIELD</h2>
+				<p> Бейте издалека, бейте, как можно чаще. Не бойтесь промахнуться. Чем больше ударов, тем больше вероятность точного попадания. Заставьте вратаря работать с полной нагрузкой. Дайте ему возможность ошибиться…</p>
+				<p> «Если ты не знаешь, что делать с мячом в штрафной, просто забей гол. А после матча мы разберёмся, что ещё можно было сделать». Боб Пэйсли.</p>
+      <p>Некоторые считают, что футбол – дело жизни и смерти. Они ошибаются: футбол гораздо важнее. 
+     БИЛЛ ШАНКЛИ, английский футбольный менеджер</p>
+				<p>Всё изменяется в жизни так, как этого хочет общество, но только футбол, развивается благодаря своим гениям!</p>
+			</div>
+			
+		</div><! --/row -->
+		<div class="row centered mt mb">
+			<div class="col-lg-8 col-lg-offset-2">
+				<style type="text/css">
+				#map {
+        			min-height: 500px;}
+				</style>
+			<div id="map"></div>
+    <script>
+
+      function initMap() {
+        var myLatLng = {lat: 42.844134, lng: 74.611385};
+
+        var map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 15,
+          center: myLatLng
+        });
+
+        var marker = new google.maps.Marker({
+          position: myLatLng,
+          map: map,
+          title: 'Hello World!'
+        });
+      }
+    </script>
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCaPLwFBXgdH0oP5Otm87xaPF_6Rqtseg4&callback=initMap">
+    </script>
+			</div>
+		</div>	
+			
+		</div>
+	</div><! --/container -->
+	
+
+	<div id="footerwrap">
+		<div class="container">
+			<div class="row centered">
+				<div class="col-lg-2">
+					<p><b>FootFIELD</b></p>
+				</div>
+			
+				<div class="col-lg-4">
+					<p>FootFIELD Inc. Office, Moskovskaya Street 168/2, 720021, Bishkek, Kyrgyz Republic.</p>
+				</div>
+				<div class="col-lg-3">
+					<p>support@footfield.kg</p>
+				</div>
+				<div class="col-lg-3">
+					<div class="centered socials">
+						<div class="col-lg-2 col-sm-1 col-md-1 col-xs-1">
+							<a href="#"><i class="fa fa-facebook"></i></a>
+						</div>
+						<div class="col-lg-2 col-sm-1 col-md-1 col-xs-1">
+							<a href="#"><i class="fa fa-twitter"></i></a>
+						</div>
+						<div class="col-lg-2 col-sm-1 col-md-1 col-xs-1">
+							<a href="#"><i class="fa fa-linkedin"></i></a>
+						</div>
+						<div class="col-lg-2 col-sm-1 col-md-1 col-xs-1">
+							<a href="#"><i class="fa fa-instagram"></i></a>
+						</div>
+						<div class="col-lg-2 col-sm-1 col-md-1 col-xs-1">
+							<a href="#"><i class="fa fa-tumblr"></i></a>
+						</div>
+						<div class="col-lg-2 col-sm-1 col-md-1 col-xs-1">
+							<a href="#"><i class="fa fa-odnoklassniki"></i></a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+  	
+
+	
+  	<!-- Modal -->
+  		<div class="modal fade" id="register" role="dialog">
+  		  <div class="modal-dialog">
+  		  
+  		    <!-- Modal content-->
+  		    <div class="modal-content">
+  		      <div class="modal-header">
+  		        <button type="button" class="close" data-dismiss="modal">&times;</button>
+  		    
+  		        <ul class="nav nav-tabs final-login modal-title">
+    			    <li class="active"><a data-toggle="tab" href="#sectionA">Sign In</a></li>
+    			    <li><a data-toggle="tab" href="#sectionB">Join us!</a></li>
+    			</ul>
+  		      </div>
+  		      <div class="modal-body">
+    <div class="tab-content">
+        <div id="sectionA" class="tab-pane fade in active">
+        <div class="innter-form">
+            <form class="sa-innate-form" method="post">
+            <label>Email Address</label>
+            <input type="text" name="username" required>
+            <label>Password</label>
+            <input type="password" name="password" required>
+            <div class="form-group"> 
+			  <div class=" col-sm-12">
+			    <div class="checkbox">
+			      <label><input type="checkbox"> Remember me</label>
+			    </div>
+			  </div>
+			</div>
+            <button type="submit">Sign In</button>
+            </form>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+        <div id="sectionB" class="tab-pane fade">
+			<div class="innter-form">
+            <form class="sa-innate-form" method="post">
+            <label>Email Address</label>
+            <input type="email" name="username" required>
+            <label>Tel. number</label>
+            <input type="text" name="tel" required>
+            <label>Name</label>
+            <input type="text" name="name" required>
+            <label>Password</label>
+            <input type="password" name="password" required>
+            <label>Password (confirm)</label>
+            <input type="password" name="password2" required>
+
+            <button type="submit">Join now</button>
+            <p>By clicking Join now, you agree with our Policy.</p>
+            </form>
+            </div>
+        </div>
+    </div>
+    </div>
+  		      </div>
+  		  </div>
+  		</div>
+	<!--modal end-->
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script src="assets/js/bootstrap.min.js"></script>
+  </body>
+</html>

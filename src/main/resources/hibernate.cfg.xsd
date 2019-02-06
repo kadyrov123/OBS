@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="hibernate-configuration" type="hibernate-configurationType"/>
+  <xs:complexType name="session-factoryType">
+    <xs:sequence>
+      <xs:element type="propertyType" name="property" maxOccurs="unbounded" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="propertyType">
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+        <xs:attribute type="xs:string" name="name" use="optional"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="hibernate-configurationType">
+    <xs:sequence>
+      <xs:element type="session-factoryType" name="session-factory">
+        <xs:annotation>
+          <xs:documentation>&lt;property name="connection.username"/>  &lt;property name="connection.password"/>  DB schema will be updated if needed  &lt;property name="hbm2ddl.auto">update&lt;/property></xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

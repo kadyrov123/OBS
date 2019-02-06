@@ -1,0 +1,27 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+    <class name="com.demo.OBS.Model.Foto" table="foto" schema="obs">
+        <id name="id">
+            <column name="id" sql-type="int(10)"/>
+        </id>
+        <property name="foto1">
+            <column name="foto1" sql-type="varchar(100)" length="100"/>
+        </property>
+        <property name="foto2">
+            <column name="foto2" sql-type="varchar(100)" length="100" not-null="true"/>
+        </property>
+        <property name="foto3">
+            <column name="foto3" sql-type="varchar(100)" length="100" not-null="true"/>
+        </property>
+        <property name="foto4">
+            <column name="foto4" sql-type="varchar(100)" length="100" not-null="true"/>
+        </property>
+        <property name="foto5">
+            <column name="foto5" sql-type="varchar(100)" length="100" not-null="true"/>
+        </property>
+    </class>
+</hibernate-mapping>
