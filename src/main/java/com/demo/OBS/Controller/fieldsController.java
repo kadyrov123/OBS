@@ -1,18 +1,24 @@
 package com.demo.OBS.Controller;
 
 import com.demo.OBS.Dao.DaoUsers;
+import org.springframework.mail.javamail.JavaMailSender;
 import com.demo.OBS.Model.*;
 import com.demo.OBS.Service.AdminService;
 import com.demo.OBS.Service.CentersService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.mail.MailSender;
+import org.springframework.mail.SimpleMailMessage;
+import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 
+import javax.mail.MessagingException;
+import javax.mail.internet.MimeMessage;
 import javax.validation.Valid;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -27,7 +33,9 @@ public class fieldsController {
     CentersService centersService;
     @Autowired
     AdminService adminService;
-    DaoUsers daoUsers;
+    @Autowired
+    JavaMailSender javaMailSender;
+
 
     Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 
@@ -79,7 +87,7 @@ public class fieldsController {
 
     @RequestMapping("/sendCheckedTimeIdToController")
     public String sendCheckedTimeIdToController(@RequestParam("time[]") List<String> timeId, @RequestParam int fieldId,
-                                                @RequestParam String day, Authentication auth){
+                                                @RequestParam String day, Authentication auth) throws MessagingException {
         List<Day> week = centersService.getWeek();
         String stringDate = "";
         for(Day d: week){
@@ -96,9 +104,32 @@ public class fieldsController {
             Booked booked = new Booked(fieldId, user.getId(), date, Integer.parseInt(t));
             centersService.book(booked);
         }
+        System.out.println("booked");
+
+        //==================================== Email sending ==================================================
+
+        System.out.println(4);
         return "/";
     }
+/*
+    void sendEmail(String to ,String subject, String text){
+        System.out.println(1);
+        MimeMessage mimeMessage = javaMailSender.createMimeMessage();
+        MimeMessageHelper mimeMessageHelper = new MimeMessageHelper(mimeMessage);
+        System.out.println(2);
+        try {
+            System.out.println(3);
+            mimeMessageHelper.setTo(to);
+            mimeMessageHelper.setSubject(subject);
+            mimeMessageHelper.setText("text");
+            javaMailSender.send(mimeMessage);
+        } catch (MessagingException e) {
+            System.out.println("Error in massage sending");
+        }
 
 
 
+    }
+
+*/
 }
