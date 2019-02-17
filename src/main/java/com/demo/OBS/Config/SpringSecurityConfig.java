@@ -46,10 +46,14 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
                 .anyRequest().permitAll()
                 .and()
                 .formLogin()
-                //.loginPage("/login")
-                .permitAll()
+                    .loginPage("/?loginModal=1")
+                    .loginProcessingUrl("/j_spring_security_check")
+                    //.failureUrl("login?error")
+                    .usernameParameter("j_username")
+                    .passwordParameter("j_password")
+                    .permitAll()
                 .and()
-                .logout().logoutUrl("/logout").and()
+                .logout().logoutUrl("/").and()
                 .httpBasic();
     }
 

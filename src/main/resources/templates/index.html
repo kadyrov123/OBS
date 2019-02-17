@@ -45,7 +45,7 @@
                </div>
 
 
-            <li><a href="#register" data-toggle="modal" data-target="#register">Вход/регистрация</a></li>
+            <li><a href="#register"  data-toggle="modal" data-target="#register">Вход/регистрация</a></li>
          </ul>
       </div>
       <!--/.nav-collapse -->
@@ -359,11 +359,11 @@
             <div class="tab-content">
                <div id="sectionA" class="tab-pane fade in active">
                   <div class="innter-form">
-                     <form class="sa-innate-form" method="post" th:href="@{/login}">
-                        <label>Email Address</label>
-                        <input type="text" name="username" required>
-                        <label>Password</label>
-                        <input type="password" name="password" required>
+                     <form method="POST" th:action="@{/j_spring_security_check}" class="sa-innate-form">
+                        <label for="username">Username</label>
+                        <input type="text" id="username" name="j_username"/>
+                        <label for="password">Password</label>
+                        <input type="password" id="password" name="j_password"/>
                         <div class="form-group">
                            <div class=" col-sm-12">
                               <div class="checkbox">
@@ -371,7 +371,7 @@
                               </div>
                            </div>
                         </div>
-                        <button type="submit">Sign In</button>
+                        <button type="submit" name="submit">Sign In</button>
                      </form>
                   </div>
                   <div class="clearfix"></div>
@@ -513,7 +513,20 @@
 <!-- Placed at the end of the document so the pages load faster -->
 <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 <script src="assets/js/bootstrap.min.js"></script>
+
+   <script th:inline="javascript">
+      /*<![CDATA[*/
+      var url_string =document.URL;
+      var url = new URL(url_string);
+      var openLoginModal =url.searchParams.get("loginModal");
+      if(openLoginModal==1){
+         $("#register").modal();
+      }
+      /*]]>*/
+   </script>
+
 <script type="text/javascript">
+
     $(document).ready(function() {
         var today = '7';
         var times = [
